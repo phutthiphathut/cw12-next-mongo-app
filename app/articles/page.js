@@ -1,7 +1,9 @@
 import { addArticle, getArticles, deleteArticle } from "@/actions/articles";
 
 export default async function Home() {
-  const articles = await getArticles();
+  // const articles = await getArticles();
+
+  const articles = [];
 
   return (
     <main>
@@ -10,7 +12,9 @@ export default async function Home() {
         <div>
           {articles.map((article) => (
             <div key={article._id}>
-              <button onClick={()=>deleteArticle(article._id)}>X</button>
+              <form action={deleteArticle(article._id)} method="POST">
+                <button>X</button>
+              </form>
               <h3>
                 [{article.category}] {article.title}
               </h3>
